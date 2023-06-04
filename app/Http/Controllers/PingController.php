@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Register a route for PingController
+ *
+ * Route::get('api/ping', PingController::class)->name('ping');
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\User;

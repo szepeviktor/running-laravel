@@ -1,9 +1,7 @@
 includes:
-    - phpstan-baseline.neon
     - vendor/nunomaduro/larastan/extension.neon
+    - phpstan-baseline.neon
 parameters:
-    # The level 8 is the highest level
-    level: 5
     paths:
         - app/
         - bootstrap/app.php
@@ -11,3 +9,6 @@ parameters:
         - database/
         - public/index.php
         - routes/
+    level: 5
+    #noModelMake: false
+    #ignoreErrors:

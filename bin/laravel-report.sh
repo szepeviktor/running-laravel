@@ -14,7 +14,8 @@
 # Set log rotation in .env
 #
 #     APP_ENV=production
-#     APP_LOG=daily
+#     #APP_LOG=daily
+#     APP_LOG=stack
 #
 # Adding cron job
 #
@@ -39,7 +40,7 @@ test -x "${LARAVEL_PATH}/artisan"
 
 # Check for failed queue jobs
 # Laravel v8 No failed jobs!
-# Laravel v9 No failed jobs found.
+# Laravel v9, v10 No failed jobs found.
 if ! "${LARAVEL_PATH}/artisan" queue:failed | grep -q -F 'No failed jobs'; then
     "${LARAVEL_PATH}/artisan" queue:failed 1>&2
     exit 101

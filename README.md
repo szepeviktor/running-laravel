@@ -1,42 +1,20 @@
 # Running a Laravel application
 
-Laravel upgrade service: https://laravelshift.com/
-and [Rector](https://github.com/rectorphp/rector-laravel)
+## Setting up GitHub repository
 
-### Application setup in production
-
-- Document everything in `hosting.yml`
-- Git repository and SSH key
+- See [GitHub repository inspection](https://github.com/szepeviktor/github-repository-inspection)
 - The first commit must be a tagged release of `laravel/laravel`
-- Default Apache virtualhost + PHP FPM pool + SSL certificate
-- Apache config
-- PHP extensions and directives (declared also in `php-env-check.php`)
-- Local "locales", see [Locale-gettext.md](./Locale-gettext.md)
-- `.env` variables
-- Database seeding and/or import
-- Media import
-- [CD](/webserver/Continuous-integration-Continuous-delivery.md) testing
-- Per application CLI configuration `php -c /home/user/website/php-cli.ini`
-- Laravel queues
-- Cron jobs (sitemap, queue checks)
-- Outbound email: Laravel SwiftMailer or `mail()` and local queuing MTA
-- Log reporting (`laravel-report.sh`)
-- Periodic git status check (`git.sh`)
-- Monitor front page with Monit
-- Register to webmaster tools
-- Think of other environments (development/staging/beta/demo)
 
-### In-app security
+## Security
 
-- Use [Argon2 hashing](https://laravel.com/docs/5.6/hashing)
-- WAF for WordPress patched
 - HTTP method not in routes
 - HTTP 404
 - CSRF token mismatch (Google Translate, Facebook app, Google Search "Cached")
 - Failed login attempts
+- Requests for .php files
 - Non-empty hidden field in forms
 
-#### Security Exceptions
+### Security Exceptions
 
 ```php
 protected $securityExceptions = [
@@ -49,7 +27,7 @@ protected $securityExceptions = [
 ];
 ```
 
-### Laravel caches
+## Caches
 
 Use [Redis PECL extension](https://laravel.com/docs/5.6/redis#phpredis) instead of Predis,
 and the [key hash tag](https://laravel.com/docs/5.6/queues#driver-prerequisites).
@@ -67,11 +45,13 @@ See `/vendor/laravel/framework/src/Illuminate/Foundation/Application.php`
 
 Caching depends on `APP_ENV` variable.
 
-### Static Analysis
+## Static analysis
 
-[Larastan](https://github.com/nunomaduro/larastan) a PHPStan wrapper for Laravel.
+- [Larastan](https://github.com/nunomaduro/larastan) a PHPStan wrapper for Laravel.
+- [Bladestan](https://github.com/TomasVotruba/bladestan)
+- [more](https://github.com/stars/szepeviktor/lists/static-analysis)
 
-### Throttle 404 errors
+## Throttle 404 errors
 
 `routes/web.php`
 
@@ -85,17 +65,17 @@ Route::fallback(static function () {
 })->middleware('throttle:10,1');
 ```
 
-### Is Laravel down?
+## Is Laravel down?
 
-1. `echo 'App::isDownForMaintenance();exit;' | ./artisan tinker`
+1. `./artisan tinker --execute='printf("Application is %s.",App::isDownForMaintenance()?"down":"up");'`
 1. `ls storage/framework/down`
 1. `./artisan isdown` - using `Commands/IsDownForMaintenance.php`
 
-### Check route methods
+## Check route methods
 
 `./artisan route:check` - using `Commands/RouteCheckCommand.php`
 
-### Debugging
+## Debugging
 
 https://github.com/spatie/ray
 
@@ -110,7 +90,7 @@ Add the following to `app/Providers/AppServiceProvider.php`
     }
 ```
 
-### URL categories
+## URL categories
 
 - Root files - stored in `public/` and `public/.well-known/` directories
 - Static assets - stored in various subdirectories of `public/`

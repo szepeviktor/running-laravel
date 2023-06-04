@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Log reading of non-existent Laravel configuration key.
+# Patch framework to log reading of non-existent configuration keys.
 #
 # VERSION       :0.1.0
 # DATE          :2020-08-30

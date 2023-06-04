@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Display first Laravel log lines.
+# Display first two lines of multiline Laravel log items.
 #
 
 cd /home/USER/website/code/storage/logs/ || exit 10

@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Laravel_Project">
-    <description>Rules for Laravel projects in addition to PHP CS Fixer.</description>
+    <description>Rules for Laravel applications.</description>
 
-    <file>./app/</file>
-
-    <!-- A comma separated list of file extensions to check -->
-    <arg name="extensions" value="php" />
-    <!-- How many files should be checked simultaneously -->
-    <arg name="parallel" value="4" />
-    <!-- Show progress of the run -->
-    <arg value="p" />
-
-    <rule ref="Generic.PHP.NoSilencedErrors" />
-
-    <rule ref="Squiz.Commenting.BlockComment" />
-
+    <rule ref="Generic.PHP.NoSilencedErrors"/>
+    <rule ref="Squiz.Commenting.BlockComment"/>
     <rule ref="Squiz.PHP.DiscouragedFunctions">
         <properties>
             <property name="forbiddenFunctions" type="array">
@@ -52,7 +41,7 @@
                 <element key="dd" value="null"/>
                 <element key="dump" value="null"/>
                 <!-- Laravel helpers -->
-                <!-- See find-global-functions.php -->
+                <!-- See bin/find-global-functions.php -->
                 <!-- <element key="__" value="null"/> -->
                 <element key="abort" value="null"/>
                 <element key="abort_if" value="null"/>
@@ -181,4 +170,19 @@
             </property>
         </properties>
     </rule>
+    <!-- Add Slevomat sniffs: https://github.com/slevomat/coding-standard/tree/master/doc -->
+
+    <file>./app/</file>
+    <file>./bootstrap/app.php</file>
+    <file>./config/</file>
+    <file>./database/</file>
+    <file>./public/index.php</file>
+    <file>./routes/</file>
+
+    <!-- A comma separated list of file extensions to check -->
+    <arg name="extensions" value="php"/>
+    <!-- How many files should be checked simultaneously -->
+    <arg name="parallel" value="4"/>
+    <!-- Show progress of the run -->
+    <arg value="p"/>
 </ruleset>

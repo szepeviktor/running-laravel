@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Needs configuration item projectconfig.hash => env('APP_HASH', '');
+ */
+
 namespace App\Providers;
 
 use Dotenv\Dotenv;
@@ -13,10 +17,20 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // Check for queue workers with outdated source code
+        $this->checkOutdatedWorkers();
+    }
+
+    /**
+     * Check for queue workers with outdated source code
+     */
+    protected function checkOutdatedWorkers()
+    {
         Queue::before(function (JobProcessing $event) {
-            // Re/load .env file
             $app = app();
+
+            // @FIXME Compare application source code/git commit hash and .env file contents
+
+            // Re/load .env file
             Dotenv::create(
                 Env::getRepository(),
                 $app->environmentPath(),

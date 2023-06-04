@@ -1,18 +1,19 @@
 <?php
 
+/**
+ * Add the followings to App\ProvidersAppServiceProvider::register
+ *
+ *     $this->app->extend('config', function ($config) {
+ *         return new RepositoryWithLogging($config->all());
+ *     });
+ */
+
 namespace App\Config;
 
 use Illuminate\Config\Repository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 
-/**
- * Add to App\ProvidersAppServiceProvider::register()
- *
- *     $this->app->extend('config', function ($config) {
- *         return new RepositoryWithLogging($config->all());
- *     });
- */
 class RepositoryWithLogging extends Repository
 {
     /**

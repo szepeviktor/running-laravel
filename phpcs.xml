@@ -26,7 +26,6 @@
                 <element key="define" value="null"/>
                 <element key="die" value="null"/>
                 <element key="echo" value="null"/>
-                <element key="env" value="null"/>
                 <element key="error_log" value="null"/>
                 <element key="eval" value="null"/>
                 <element key="exit" value="null"/>

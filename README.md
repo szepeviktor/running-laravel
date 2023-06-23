@@ -5,6 +5,15 @@
 - See [GitHub repository inspection](https://github.com/szepeviktor/github-repository-inspection)
 - The first commit must be a tagged release of `laravel/laravel`
 
+## Entry points
+
+(startup methods)
+
+1. Web - through `public/index.php`
+2. CLI - through `artisan`
+3. Queue workers - through `artisan queue:work`
+4. Cron job - through `artisan schedule:run`
+
 ## Security
 
 - HTTP method not in routes

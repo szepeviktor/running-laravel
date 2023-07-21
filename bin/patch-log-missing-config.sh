@@ -13,5 +13,6 @@ LARAVEL_CONFIG_REPOSITORY="vendor/laravel/framework/src/Illuminate/Config/Reposi
 
 test -r "${LARAVEL_CONFIG_REPOSITORY}"
 
+# shellcheck disable=SC2016
 sed -i -e '/ Arr::get(/i if (!$this->has($key)) \\Illuminate\\Support\\Facades\\Log::notice("Missing configuration key: ".$key); // FIXME' \
     "${LARAVEL_CONFIG_REPOSITORY}"

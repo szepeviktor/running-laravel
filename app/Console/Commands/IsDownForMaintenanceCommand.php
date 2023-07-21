@@ -27,7 +27,7 @@ class IsDownForMaintenanceCommand extends Command
      */
     public function handle()
     {
-        if (!$this->laravel->isDownForMaintenance()) {
+        if (! $this->laravel->isDownForMaintenance()) {
             $this->info('Application is up.');
 
             return Command::FAILURE;
@@ -35,7 +35,7 @@ class IsDownForMaintenanceCommand extends Command
 
         $data = json_decode(file_get_contents(storage_path('framework/down')), true);
 
-        $this->info('Number of data fields: ' . (string) count($data));
+        $this->info('Number of data fields: '.(string) count($data));
 
         return Command::SUCCESS;
     }

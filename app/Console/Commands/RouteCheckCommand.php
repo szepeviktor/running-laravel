@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\App;
 
 class RouteCheckCommand extends Command
 {
@@ -45,7 +46,6 @@ class RouteCheckCommand extends Command
     /**
      * Create a new route command instance.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
     public function __construct(Router $router)
@@ -85,7 +85,8 @@ class RouteCheckCommand extends Command
                 case self::ACTION_PARTS_METHOD:
                     $className = $actionParts[0];
                     if (! class_exists($className) || ! is_callable(new $className)) {
-                        $missing[] = [$className . '::__invoke'];
+                        $missing[] = [$className.'::__invoke'];
+
                         continue 2;
                     }
                     break;
@@ -93,15 +94,18 @@ class RouteCheckCommand extends Command
                     $className = $actionParts[0];
                     if (! class_exists($className)) {
                         $missing[] = [$className];
+
                         continue 2;
                     }
-                    if (! is_callable([$className, $actionParts[1]])) {
-                        $missing[] = [$className . '::' . $actionParts[1]];
+                    if (! is_callable([App::make($className, []), $actionParts[1]])) {
+                        $missing[] = [$className.'::'.$actionParts[1]];
+
                         continue 2;
                     }
                     break;
                 default:
                     $missing[] = [$route['action']];
+
                     continue 2;
             }
         }
@@ -118,31 +122,26 @@ class RouteCheckCommand extends Command
     }
 
     /**
-     * Compile the routes into a displayable format.
+     * Compile the routes into a displayable format. FIXME Rename!
      */
     protected function getRoutes(): array
     {
-        return array_map(
-            static function (Route $route): array {
-                return $this->getRouteInformation($route);
-            },
-            $this->routes
-        );
+        $results = [];
+
+        foreach ($this->routes as $route) {
+            $results[] = $this->getRouteInformation($route);
+        }
+
+        return $results;
     }
 
     /**
      * Get the route information for a given route.
      *
-     * @link https://github.com/laravel/framework/blob/8.x/src/Illuminate/Foundation/Console/RouteListCommand.php
+     * @link https://github.com/laravel/framework/blob/9.x/src/Illuminate/Foundation/Console/RouteListCommand.php
      */
     protected function getRouteInformation(Route $route): array
     {
-        return [
-            'host' => $route->domain(),
-            'uri' => $route->uri(),
-            'name' => $route->getName(),
-            'action' => $route->getActionName(),
-            'method' => implode('|', $route->methods()),
-        ];
+        return ['action' => $route->getActionName()];
     }
 }

@@ -12,6 +12,7 @@ use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

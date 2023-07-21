@@ -169,7 +169,17 @@
             </property>
         </properties>
     </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.StartFile">
+        <severity>5</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndFile">
+        <severity>5</severity>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <severity>5</severity>
+    </rule>
     <!-- Add Slevomat sniffs: https://github.com/slevomat/coding-standard/tree/master/doc -->
+    <!-- Add sniffs from https://github.com/PHPCSStandards/PHPCSExtra#modernize -->
 
     <file>./app/</file>
     <file>./bootstrap/app.php</file>

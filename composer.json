@@ -1,0 +1,30 @@
+{
+    "name": "company/laravel-project",
+    "type": "project",
+    "description": "Running Laraval framework-based web applications for long years",
+    "keywords": [
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "~8.2.6",
+        "ext-curl": "*",
+        "ext-exif": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-redis": "*",
+        "ext-xml": "*",
+        "ext-zip": "*",
+        "composer-plugin-api": "^2.2",
+        "laravel/framework": "^10.13"
+    },
+    "require-dev": {
+        "nunomaduro/larastan": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

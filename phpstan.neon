@@ -11,5 +11,16 @@ parameters:
         - public/index.php
         - routes/
     level: 5
+    checkAlwaysTrueCheckTypeFunctionCall: true
+    checkAlwaysTrueInstanceof: true
+    checkAlwaysTrueStrictComparison: true
+    checkAlwaysTrueLooseComparison: true
+    checkClassCaseSensitivity: false
+    checkDynamicProperties: true
+    checkExplicitMixed: false
+    checkImplicitMixed: false
+    checkExplicitMixedMissingReturn: true
+    checkFunctionNameCase: true
+    checkInternalClassCaseSensitivity: true
     #noModelMake: false
     #ignoreErrors:

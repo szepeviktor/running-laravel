@@ -1,5 +1,16 @@
 # Running a Laravel application
 
+[![theories](https://img.shields.io/badge/more-theories-purple)](https://github.com/stars/szepeviktor/lists/theory)
+
+list features -> orgranize them into categories, see GH issue!
+
+ErrorDocument 500 /errors/HTTP_INTERNAL_SERVER_ERROR.html
+ErrorDocument 503 /errors/HTTP_SERVICE_UNAVAILABLE.html
+https://templates.mailchimp.com/resources/inline-css/
+
+mysqldump --routines --triggers --events
+
+
 ## Setting up GitHub repository
 
 - See [GitHub repository inspection](https://github.com/szepeviktor/github-repository-inspection)
@@ -7,7 +18,7 @@
 
 ## Entry points
 
-(startup methods)
+Startup methods.
 
 1. Web - through `public/index.php`
 2. CLI - through `artisan`
@@ -47,6 +58,7 @@ and the [key hash tag](https://laravel.com/docs/5.6/queues#driver-prerequisites)
 - Discovered packages `/bootstrap/cache/packages.php` - flushed in composer script `post-autoload-dump`
 - Configuration cache `/bootstrap/cache/config.php` - flushed by `artisan config:clear`
 - Routes cache `/bootstrap/cache/routes.php` - flushed by `artisan route:clear`
+- Events cache `/bootstrap/cache/events.php` - flushed by `artisan event:clear`
 - Application cache (`CACHE_DRIVER`) - flushed by `artisan cache:clear`
 - Blade templates cache `/storage/framework/views/*.php` - flushed by `artisan view:clear`
 
@@ -84,6 +96,16 @@ Route::fallback(static function () {
 
 `./artisan route:check` - using `Commands/RouteCheckCommand.php`
 
+## Check PHP version after PHP upgrade
+
+Insert this line in the top of `bootstrap/app.php`
+
+```php
+if (phpversion() !== '8.2.7') dd('Different PHP version:', phpversion());
+```
+
+Check all four entry points!
+
 ## Debugging
 
 https://github.com/spatie/ray
@@ -106,3 +128,8 @@ Add the following to `app/Providers/AppServiceProvider.php`
 - User generated media - stored in `storage/app/public/` directory
 - Virtual URL-s are handled by Laravel started in `public/index.php`
 - Explicit API calls prefixed with `/api/` in URL path
+
+## Nova
+
+Custom exception handling
+https://nova.laravel.com/docs/4.0/installation.html#error-reporting

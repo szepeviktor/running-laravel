@@ -5,6 +5,7 @@
 - PHP extensions and directives (declared also in `php-env-check.php`)
 - Apache config: `Include public/.htaccess`
 - `.env` variables
+- Private repository credentials `composer config --global http-basic.nova.laravel.com "$NOVA_LICENSE_ACCOUNT" "$NOVA_LICENSE_KEY"`
 - Database seeding and/or import
 - Media import
 - [CD](/webserver/Continuous-integration-Continuous-delivery.md) testing
@@ -12,6 +13,10 @@
 - Set up queues
 - Cron jobs (sitemap, queue checks)
 - Outbound email: Laravel SwiftMailer or `mail()` and local queuing MTA
+- Test email: `Mail::raw('Visit our application '.config('app.url'),function($msg){$msg->to('admin@szepe.net')->subject('Greetings from '.config('app.env'));});`
+    `Notification::route('mail','admin@szepe.net')->notify(new WelcomeNotification());`
+- artisan queue:show-failed-payload ID
+- artisan queue:show-failed-exception ID
 - Log reporting (`bin/laravel-report.sh`)
 - Periodic file check (`bin/tripwire-fake.sh`)
 - Monitor front page and ping API endpoint with Monit

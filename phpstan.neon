@@ -3,6 +3,7 @@ includes:
     #- vendor/nesbot/carbon/extension.neon
     #- phpstan-baseline.neon
 parameters:
+    editorUrlTitle: '%%relFile%%:%%line%%'
     paths:
         - app/
         - bootstrap/app.php

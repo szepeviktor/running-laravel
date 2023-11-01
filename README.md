@@ -113,10 +113,13 @@ https://github.com/spatie/ray
 Add the following to `app/Providers/AppServiceProvider.php`
 
 ```php
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
     public function boot(): void
     {
-        \DB::listen(function ($query) {
-            \info('SQL query: ' . $query->sql);
+        DB::listen(function ($query) {
+            Log::info('SQL query', [$query->sql, $sql->bindings, $sql->time]);
         });
     }
 ```

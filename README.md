@@ -118,8 +118,8 @@ use Illuminate\Support\Facades\Log;
 
     public function boot(): void
     {
-        DB::listen(function ($query) {
-            Log::info('SQL query', [$query->sql, $sql->bindings, $sql->time]);
+        DB::listen(static function ($query) {
+            Log::info('SQL query', [$query->sql, $query->bindings, $query->time]);
         });
     }
 ```

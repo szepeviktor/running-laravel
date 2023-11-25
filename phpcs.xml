@@ -19,7 +19,7 @@
                 Defaults: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/Squiz/Sniffs/PHP/DiscouragedFunctionsSniff.php
                 See https://github.com/WordPress/WordPress-Coding-Standards/blob/develop/WordPress/Sniffs/PHP/DiscouragedPHPFunctionsSniff.php
                 -->
-                <!-- PHP built-in global functions -->
+                <!-- PHP built-in functions -->
                 <!-- Copy of https://github.com/szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset/blob/master/PSR12NeutronRuleset/ruleset.xml -->
                 <element key="compact" value="null"/>
                 <element key="create_function" value="null"/>
@@ -40,7 +40,7 @@
                 <element key="dd" value="null"/>
                 <element key="dump" value="null"/>
                 <!-- Laravel helpers -->
-                <!-- See bin/find-global-functions.php -->
+                <!-- See bin/find-global-functions.sh -->
                 <!-- <element key="__" value="null"/> -->
                 <element key="abort" value="null"/>
                 <element key="abort_if" value="null"/>

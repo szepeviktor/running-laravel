@@ -10,4 +10,4 @@ Laravel upgrade service: https://laravelshift.com/
 
 ## Dependencies
 
-## Anything other needing an upgrade
+## Everything else in need of upgrade

@@ -19,6 +19,13 @@ return [
             'days' => 14,
         ],
 
+        'scheduler' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/scheduler.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+
         'firewall' => [
             'driver' => 'monolog',
             'handler' => ErrorLogHandler::class,

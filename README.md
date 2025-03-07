@@ -2,14 +2,15 @@
 
 [![theories](https://img.shields.io/badge/more-theories-purple)](https://github.com/stars/szepeviktor/lists/theory)
 
-list features -> orgranize them into categories, see GH issue!
+🚧 list features -> orgranize them into categories, see GH issue!
 
+```apache
 ErrorDocument 500 /errors/HTTP_INTERNAL_SERVER_ERROR.html
 ErrorDocument 503 /errors/HTTP_SERVICE_UNAVAILABLE.html
-https://templates.mailchimp.com/resources/inline-css/
+# https://templates.mailchimp.com/resources/inline-css/
+```
 
-mysqldump --routines --triggers --events
-
+`mysqldump --routines --triggers --events`
 
 ## Setting up GitHub repository
 

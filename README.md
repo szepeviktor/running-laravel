@@ -8,6 +8,8 @@
 ErrorDocument 500 /errors/HTTP_INTERNAL_SERVER_ERROR.html
 ErrorDocument 503 /errors/HTTP_SERVICE_UNAVAILABLE.html
 # https://templates.mailchimp.com/resources/inline-css/
+
+Alias "/storage/" "/home/${SITE_USER}/website/code/storage/app/public/"
 ```
 
 `mysqldump --routines --triggers --events`
